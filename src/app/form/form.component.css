@@ -1,0 +1,9 @@
+.container {
+    height: auto;
+    width: auto;
+    color: #181414;
+    box-sizing: border-box;
+    border-color: 2px solid #787777;
+    background-color: rgb(141, 175, 214);
+    margin-top: 30px;
+}

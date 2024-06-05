@@ -1,0 +1,54 @@
+<div class="container">
+    <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
+
+        <div class="row">
+            <h2>Financial Summary</h2>
+            <p>Total Income: {{ totalIncome | currency:'INR' }}</p>
+            <p>Total Expense: {{ totalExpenses | currency: 'INR' }}</p>
+            <p>Total Expense Percentage: {{ expensesPercentageOfIncome | number:'1.0-2' }}%</p>
+            <p>Saving Percentage: {{ savingPercentage | number:'1.0-2' }}%</p>
+            <p>Savings in Rupees: {{ savingsInRupees | currency:'INR' }}</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <label for="type">Transaction Type</label>
+                <select id="type" class="form-control" formControlName="type">
+                    <option value="Income">Income</option>
+                    <option value="Expense">Expense</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="amount">Amount</label>
+                <input id="amount" class="form-control" type="number" formControlName="amount">
+            </div>
+            <div class="col-md-4">
+                <label for="reason">Reason</label>
+                <input id="reason" class="form-control" type="text" formControlName="reason">
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-dark">Submit</button>
+        </div>
+    </form>
+    <div class="transactions">
+        <h3>Transactions</h3>
+        <table class="table table-striped mt-4">
+            <thead>
+                <tr>
+                    <th scope="col">Type</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Reason</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let transaction of transactions">
+                    <td>{{ transaction.type }}</td>
+                    <td>{{ transaction.amount | currency:'INR' }}</td>
+                    <td>{{ transaction.reason }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
